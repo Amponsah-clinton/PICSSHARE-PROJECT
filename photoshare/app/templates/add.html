@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<a class="btn btn-secondary" href="{% url 'gallery' %}">Go Back</a>
+
+<body class='m-5'>
+    <h3 style="text-align: center;font-size: 18px;padding: 10px 0px 30px 0px;">Add a picture page</h3>
+<div class="container">
+    <div class="row"  justify-content-center>
+        <div class="col-md-4">
+            
+<div class="card">
+<div style="padding: 20px 30px;">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form> 
+</div>
+</div>
+
+<h5 style="padding-top: 20px;">Do you have a new category?</h5>
+<a style="color: white;" class="btn btn-info" href="{% url 'addCart' %}">Add Category</a>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+</body>
+</html>
+

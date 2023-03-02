@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+    <span style="color: white; font-size: 25px; text-align: center !important;font-weight: 500;  margin:0px auto" class="navbar-brand ">PICSHUB</span>
+  </div>
+</nav>
+
+
+
+
+
+
+
+<h3 style="text-align: center;padding: 20px 0px 30px 0px;colo">Welcome {{user}}</h3>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9" >
+            <div class="container-fluid">
+                <div class="row">
+                  {% for photo in photos %}
+                  <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-6">
+                    <div class="card">
+                      <img style="height:20rem" class="image-thumbail" src="{{ photo.image.url }}" alt="">
+                      <div class="card-body">
+                       <small style="font-weight: 600; font-size: 15px;">Category: {{photo.category.name}} </small>
+                      </div>
+                      <a style="background-color:  #6f42c1; color: white;font-size: 15px;" href="{% url 'photo' photo.id %}" class="btn btn-outline-dark;">View Photo</a>
+                          </div>
+                        </div>
+                        {% empty %}
+                        <h3>No photos.........  </h3>
+                       {% endfor %}
+                  
+                 
+                </div>
+              </div>
+          </div>
+      <div class="col-sm-3 g-0 side">
+        <div class="card"  style="width: 20rem;">
+          <div class="card-header" style="font-weight: 700; color: chocolate;font-size: 19px;"> 
+            Categories
+          </div>
+          <a  style="text-decoration: none; font-weight: 500; font-size: 16px;" href="{% url 'gallery' %}"> <li class="list-group-item">All</li></a> 
+          {% for category in categories %}
+          <ul class="list-group">
+            {% comment %} send user to the correct categories list {% endcomment %}
+            <a style="text-decoration: none; font-weight: 500; font-size: 16px;" href="{% url 'gallery' %}?category={{category.name}}">  <li class="list-group-item">{{ category.name }}</li></a> 
+        </ul>
+        {% endfor %}
+        <a class="btn btn-dark" href="{% url 'add' %}">Add a Photo</a>
+      
+        <div></div>
+          </div>
+    
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

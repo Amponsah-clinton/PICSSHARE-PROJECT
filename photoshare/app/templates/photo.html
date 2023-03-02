@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+
+
+<div style="padding: 18px 0px 20px 30px;">
+<a class="btn btn-danger" href="{% url 'gallery' %}">Go Back</a>
+</div>
+
+<div class="container" style="padding-top: 24px;">
+    <div >
+        <img style="height: 70vh;padding-bottom: 30px;" src="{{photo.image.url}}" alt="" srcset="">
+        <div class="card" style="width: 47rem;">
+          <p style="padding: 16px 25px;width: 47rem; font-size: 14px; font-family:Verdana, Geneva, Tahoma, sans-serif" > <span style="font-weight: 700; font-size: 17px;">Description: </span>{{ photo.description}}</p>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
